@@ -1,0 +1,89 @@
+<ion-header>
+  <ion-toolbar>
+<ion-button size="small" href="/home">
+  Inicio
+</ion-button>
+    <ion-title>Gestion de Alumnos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-list>
+    <ion-item>
+      <ion-input
+        label="Nombre* :"
+        labelPlacement="floating"
+        [(ngModel)]="alumnos.nombre"
+        type="text">
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input
+        label="Segundo Nombre :"
+        [(ngModel)]="alumnos.snombre"
+        type="text">
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input
+        label="Apellido Paterno :"
+        [(ngModel)]="alumnos.apat"
+        type="text">
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input
+        label="Apellido Materno :"
+        [(ngModel)]="alumnos.mpat"
+        type="text">
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input
+        label="No.Control :"
+        [(ngModel)]="alumnos.n_control"
+        type="text">
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input
+        label="Fecha de Nacimiento :"
+        labelPlacement="stacked"
+        [(ngModel)]="alumnos.fecha_nac"
+        type="date">
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-select
+        label="Carrera* :"
+        [(ngModel)]="alumnos.fk_caralu">
+
+        @for (carrera of lista_carreras; track carrera.id) {
+          <ion-select-option [value]="carrera.id">
+            {{ carrera.nombre }}
+          </ion-select-option>
+        }
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-select
+        label="Genero :"
+        [(ngModel)]="alumnos.genero">
+
+        <ion-select-option value="H">Hombre</ion-select-option>
+        <ion-select-option value="M">Mujer</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+
+  <ion-button expand="block" (click)="validarGuardar()">
+    Guardar
+  </ion-button>
+</ion-content>
