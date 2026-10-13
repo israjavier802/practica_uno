@@ -1,0 +1,26 @@
+.login-container {
+  max-width: 420px;
+  margin: 24px auto 0;
+}
+ 
+.mensaje-error {
+  color: var(--ion-color-danger);
+  font-size: 0.9rem;
+  margin: 12px 4px 0;
+}
+ 
+ion-spinner {
+  width: 18px;
+  height: 18px;
+  margin-right: 8px;
+}
+ 
+.registro-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  margin-top: 16px;
+  font-size: 0.9rem;
+  color: var(--ion-color-medium);
+}

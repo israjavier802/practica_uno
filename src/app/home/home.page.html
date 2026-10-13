@@ -1,18 +1,20 @@
 <ion-header>
   <ion-toolbar color="primary">
-    <ion-title>Mi primera app 23220153 </ion-title>
-   
+    <ion-title>Mi primera app 23220153</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="cerrarSesion()" aria-label="Cerrar sesión">
+        <ion-icon slot="start" name="log-out-outline"></ion-icon>
+        Salir
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
- 
-  <ion-content class="ion-padding">
-    <h2> En mis vacaciones de verano sólo me dediqué a trabajar e ir al gimnasio.</h2>
-    <p>Esta es mi primera app.</p>
-    <ion-button default href="/detalle"> Ir a Detalle</ion-button>
-      
-        <ion-button default href="/registro"> Ir a Registro</ion-button>
-        <ion-button default href="/gestion-alumnos"> Gestion Alumnos</ion-button>
-        
-    <ion-button default href="/gestion-carreras"> Gestion Carreras</ion-button>
-      
-  </ion-content>
+
+<ion-content class="ion-padding">
+  <h2>En mis vacaciones de verano sólo me dediqué a trabajar e ir al gimnasio.</h2>
+  <p>Esta es mi primera app.</p>
+  <ion-button href="/detalle">Ir a Detalle</ion-button>
+  <ion-button href="/registro">Ir a Registro</ion-button>
+  <ion-button href="/gestion-alumnos">Gestion Alumnos</ion-button>
+  <ion-button href="/gestion-carreras">Gestion Carreras</ion-button>
+</ion-content>

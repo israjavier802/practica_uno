@@ -1,42 +1,83 @@
-<ion-header> 
-  <ion-toolbar color="primary"> 
-    <ion-title>Iniciar Sesión</ion-title> 
-  </ion-toolbar> 
-</ion-header> 
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Iniciar Sesión</ion-title>
+  </ion-toolbar>
+</ion-header>
  
-<ion-content class="ion-padding"> 
-  <div class="login-container"> 
-     
-    <ion-item> 
-      <ion-input  
-        label="IP del Servidor"  
-        labelPlacement="floating"  
-        type="text"  
-        placeholder="Ej. 192.168.1.75" 
-        [(ngModel)]="ipServidor"> 
-      </ion-input> 
-    </ion-item> 
+<ion-content class="ion-padding">
+  <!-- Al usar un <form>, la tecla Enter / "Ir" del teclado también inicia sesión -->
+  <form class="login-container" (ngSubmit)="login()">
  
-    <ion-item> 
-      <ion-input  
-        label="Correo"  
-        labelPlacement="floating"  
-        type="email"  
-        [(ngModel)]="usuario.correo"> 
-      </ion-input> 
-    </ion-item> 
+    <ion-item>
+      <ion-input
+        label="IP del Servidor"
+        labelPlacement="floating"
+        type="text"
+        inputmode="decimal"
+        placeholder="Ej. 192.168.1.75"
+        name="ip"
+        autocapitalize="off"
+        [clearInput]="true"
+        [(ngModel)]="ipServidor">
+      </ion-input>
+    </ion-item>
  
-    <ion-item> 
-      <ion-input  
-        label="Contraseña"  
-        labelPlacement="floating"  
-        type="password"  
-        [(ngModel)]="usuario.contra"> 
-      </ion-input> 
-    </ion-item> 
+    <ion-item>
+      <ion-input
+        label="Correo"
+        labelPlacement="floating"
+        type="email"
+        inputmode="email"
+        autocomplete="email"
+        autocapitalize="off"
+        name="correo"
+        [clearInput]="true"
+        [(ngModel)]="usuario.correo">
+      </ion-input>
+    </ion-item>
  
-    <ion-button expand="block" class="ion-margin-top" (click)="login()"> 
-      Entrar 
-    </ion-button> 
-  </div> 
+    <ion-item>
+      <ion-input
+        label="Contraseña"
+        labelPlacement="floating"
+        [type]="verContra ? 'text' : 'password'"
+        autocomplete="current-password"
+        autocapitalize="off"
+        name="contra"
+        [(ngModel)]="usuario.contra">
+      </ion-input>
+      <!-- Botón para mostrar / ocultar la contraseña -->
+      <ion-button
+        slot="end"
+        fill="clear"
+        type="button"
+        [attr.aria-label]="verContra ? 'Ocultar contraseña' : 'Mostrar contraseña'"
+        (click)="verContra = !verContra">
+        <ion-icon slot="icon-only" [name]="verContra ? 'eye-off-outline' : 'eye-outline'"></ion-icon>
+      </ion-button>
+    </ion-item>
+ 
+    <!-- Mensaje de error visible debajo del formulario -->
+    <p *ngIf="mensajeError" class="mensaje-error" role="alert">
+      {{ mensajeError }}
+    </p>
+ 
+    <ion-button
+      expand="block"
+      type="submit"
+      class="ion-margin-top"
+      [disabled]="cargando">
+      <ion-spinner *ngIf="cargando" name="crescent"></ion-spinner>
+      <span>{{ cargando ? 'Entrando...' : 'Entrar' }}</span>
+    </ion-button>
+ 
+    <!-- Enlace al registro -->
+    <div class="registro-link">
+      <span>¿No tienes cuenta?</span>
+      <ion-button fill="clear" size="small" type="button" (click)="irARegistro()">
+        Regístrate aquí
+      </ion-button>
+    </div>
+ 
+  </form>
 </ion-content>
